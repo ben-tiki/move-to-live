@@ -1,0 +1,132 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/icon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/countdown.css">
+
+    <title>Move to Live</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body {
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Montserrat', sans-serif;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        cursor: none;
+    }
+
+    canvas {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        cursor: none;
+    }
+</style>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="background">
+        <ul class="shapes">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <!-- game finish information -->
+    <div class="game-over">
+        <h1 id="game-over-title">Game Over</h1>
+        <div id="final-score">
+            <h2 id="score-title">Your Score:</h2>
+            <h2 id="final-score-value">0</h2>
+            <h2 id="high-score">High Score: 50</h2>
+        </div>
+        <div id="game-over-options">
+            <a id="play-again" class="game-over-option">Play Again</a>
+            <a class="game-over-option" href="../menu.html">Main Menu</a>
+        </div>
+    </div>
+
+    <div id="circle-cursor"></div>
+
+    <!-- message displayed at game start -->
+    <div id="introduction">Move the mouse to avoid the dots! Good Luck!</div>
+
+    <!-- animated countdown -->
+    <div id="countdown">
+        <div id="wrap">
+            <div class="c"></div>
+            <div class="o"></div>
+            <div class="u"></div>
+            <div class="n"></div>
+            <div class="t"></div>
+        </div>
+
+        <svg>
+            <defs>
+                <filter id="filter">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10"
+                        result="filter" />
+                    <feComposite in="SourceGraphic" in2="filter" operator="atop" />
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- paused information -->
+    <div id="paused">
+        <div>Paused</div>
+        <div id="paused-options">
+            Click on the screen or press space to resume
+        </div>
+    </div>
+
+    <!-- score ingormation -->
+    <div id="current-score-display">
+        <h1 id="current-score-total">Score:&nbsp0</h1>
+        <h1 id="current-score-dots">Dots Smashed:&nbsp0</h1>
+    </div>
+
+    <!-- animation images -->
+    <img id="explosion" src="../img/consume/pow-woman-power.gif" alt="explosion">
+
+    <script src="../js/player.js"></script>
+    <script src="../js/enemy.js"></script>
+    <script src="../js/powerup.js"></script>
+    <script src="../js/game.js"></script>
+    <script>
+        let game = new Game();
+        game.start();
+        game.countDown();
+        game.spawnEnemies();
+        game.spawnPowerUps();
+        game.draw();    
+    </script>
+
+</body>
+
+</html>

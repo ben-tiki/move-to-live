@@ -1,0 +1,120 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/icon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/controls.css">
+
+    <title>Move to Live</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+    body {
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Montserrat', sans-serif;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        cursor: none;
+    }
+
+    canvas {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        cursor: none;
+    }
+
+    #controls {
+        z-index: 2;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #go-back {
+        z-index: 3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-transform: uppercase;
+    }
+
+    #go-back-button {
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #a5b4fc;
+    }
+
+</style>
+
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="background">
+        <ul class="shapes">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div id="circle-cursor"></div> -->
+
+    <div id="go-back">
+        <a id="go-back-button" class="main-option" href="../menu.html">go back</a>
+    </div>
+
+    <div id="controls">
+        <div class="controls-fixed">
+
+            <p>You can</p>
+            <b>
+                <div class="controls-moving">
+                    move the player with the mouse.<br />
+                    use powerups by passing over them.<br />
+                    use special habilities by double clicking.<br />
+                    pause the game by clicking the spacebar.<br />
+                    have fun!
+                </div>
+            </b>
+
+        </div>
+    </div>
+</body>
+<script src="../js/player.js"></script>
+<script src="../js/game.js"></script>
+<script>
+    let game = new Game();
+    game.countDownEnded = true;
+    game.start();
+    game.draw();
+</script>
+
+</html>

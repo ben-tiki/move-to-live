@@ -1,0 +1,96 @@
+/* gui wrapper */
+#gui {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 100%;
+    user-select: none;
+    color: #ffffff;
+}
+
+/* main game title */
+#main-title {
+    width: 100%;
+    text-align: center;
+    padding: 3rem;
+}
+
+#main-title-blur {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+#main-title-blur:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: attr(filter-content);
+    filter: url(#motion-blur-filter);
+}
+
+svg {
+    display: none;
+}
+
+/* game buttons */
+#main-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+}
+
+.main-option {
+    border: 3px solid currentColor;
+    border-radius: 3rem;
+    color: #ffffff;
+    border-color: #a5b4fc;
+    font-size: 1.25rem;
+    font-weight: 100 !important;
+    overflow: hidden;
+    width: 12rem;
+    text-align: center;
+    padding: 0.5rem 2rem;
+    position: relative;
+    text-decoration: none;
+    transition: .2s transform ease-in-out;
+    will-change: transform;
+    z-index: 0;
+}
+
+.main-option::after {
+    background-color: #a5b4fc;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-100%, 0) rotate(10deg);
+    transform-origin: top left;
+    transition: .1s transform ease-out;
+    will-change: transform;
+    z-index: -1;
+}
+
+.main-option:hover::after {
+    transform: translate(0, 0);
+}
+
+.main-option:hover {
+    border: 3px solid transparent;
+    transform: scale(1.05);
+    will-change: transform;
+}
